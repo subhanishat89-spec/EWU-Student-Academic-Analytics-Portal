@@ -1,0 +1,717 @@
+/* ============================================================
+   style.css — EWU Student Academic Portal
+   East West University  |  Official Brand Colors
+   Light / Dark Theme Engine + Print-Ready Transcript CSS
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables — Light Mode (default) ─────────────────── */
+:root {
+  --ewu-green      : #006a4e;
+  --ewu-green-dark : #004d38;
+  --ewu-green-light: #e6f4ef;
+  --ewu-gold       : #f2a900;
+  --ewu-gold-dark  : #c98a00;
+  --ewu-gold-light : #fff8e6;
+
+  --bg-page        : #f4f6f5;
+  --bg-card        : #ffffff;
+  --bg-card-alt    : #f9fbfa;
+  --bg-header      : #006a4e;
+  --bg-table-head  : #006a4e;
+  --bg-table-row   : #ffffff;
+  --bg-table-alt   : #f0f7f4;
+  --bg-table-hover : #d6ede6;
+  --bg-input       : #ffffff;
+  --bg-sidebar     : #004d38;
+
+  --text-primary   : #1a2e26;
+  --text-secondary : #4a6358;
+  --text-muted     : #7a9589;
+  --text-on-green  : #ffffff;
+  --text-on-gold   : #1a1000;
+  --text-heading   : #003d2a;
+
+  --border-color   : #cde0d9;
+  --border-input   : #99c5b8;
+  --shadow-card    : 0 2px 16px rgba(0,106,78,0.10);
+  --shadow-hover   : 0 6px 28px rgba(0,106,78,0.18);
+
+  --badge-A-plus   : #006a4e;
+  --badge-A        : #1a8a68;
+  --badge-B-plus   : #2563eb;
+  --badge-B        : #3b82f6;
+  --badge-C-plus   : #d97706;
+  --badge-C        : #f59e0b;
+  --badge-D        : #dc2626;
+  --badge-F        : #7f1d1d;
+
+  --radius         : 12px;
+  --radius-sm      : 7px;
+  --transition     : all 0.22s ease;
+}
+
+/* ── CSS Variables — Dark Mode ─────────────────────────────── */
+[data-theme="dark"] {
+  --bg-page        : #0d1f18;
+  --bg-card        : #132b21;
+  --bg-card-alt    : #0f2219;
+  --bg-header      : #002d1e;
+  --bg-table-head  : #004d38;
+  --bg-table-row   : #132b21;
+  --bg-table-alt   : #0f2219;
+  --bg-table-hover : #1a4032;
+  --bg-input       : #0d1f18;
+  --bg-sidebar     : #001a11;
+
+  --text-primary   : #e0f0eb;
+  --text-secondary : #9acfbf;
+  --text-muted     : #5a9080;
+  --text-heading   : #b2ddd0;
+
+  --border-color   : #1e4035;
+  --border-input   : #2a6050;
+  --shadow-card    : 0 2px 20px rgba(0,0,0,0.40);
+  --shadow-hover   : 0 6px 32px rgba(0,200,140,0.12);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* ── Header / Navbar ─────────────────────────────────────────  */
+.ewu-header {
+  background: var(--bg-header);
+  color: var(--text-on-green);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.ewu-header .header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  gap: 16px;
+}
+
+.ewu-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ewu-logo-circle {
+  width: 50px; height: 50px;
+  background: var(--ewu-gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ewu-green-dark);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(242,169,0,0.4);
+}
+
+.ewu-title-block h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.ewu-title-block p {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Theme Toggle ────────────────────────────────────────────── */
+.theme-toggle-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 7px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.04);
+}
+
+/* ── Main Layout ─────────────────────────────────────────────── */
+.portal-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+/* ── Section Cards ───────────────────────────────────────────── */
+.card-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin-bottom: 28px;
+  transition: var(--transition);
+}
+
+.card-panel-header {
+  background: var(--ewu-green);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+[data-theme="dark"] .card-panel-header {
+  background: var(--ewu-green-dark);
+}
+
+.card-panel-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-panel-header .panel-icon {
+  font-size: 1.2rem;
+}
+
+.card-panel-body {
+  padding: 22px;
+}
+
+/* ── Form Styles ─────────────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 9px 13px;
+  border: 1.5px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  transition: var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--ewu-green);
+  box-shadow: 0 0 0 3px rgba(0,106,78,0.15);
+}
+
+.form-group input::placeholder { color: var(--text-muted); }
+
+/* full-width field */
+.form-group.full-width { grid-column: 1 / -1; }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn-ewu {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.btn-ewu:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--ewu-green);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0,106,78,0.3);
+}
+.btn-primary:hover {
+  background: var(--ewu-green-dark);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,106,78,0.35);
+}
+
+.btn-gold {
+  background: var(--ewu-gold);
+  color: var(--text-on-gold);
+  box-shadow: 0 3px 10px rgba(242,169,0,0.3);
+}
+.btn-gold:hover {
+  background: var(--ewu-gold-dark);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(242,169,0,0.4);
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+.btn-danger:hover {
+  background: #b91c1c;
+  transform: scale(1.06);
+  box-shadow: 0 3px 10px rgba(220,38,38,0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--ewu-green);
+  color: var(--ewu-green);
+}
+.btn-outline:hover {
+  background: var(--ewu-green);
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ── Alert / Status Banners ──────────────────────────────────── */
+.alert {
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  animation: slideDown 0.35s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.alert-success { background: #ecfdf5; color: #065f46; border-left: 4px solid #059669; }
+.alert-error   { background: #fef2f2; color: #991b1b; border-left: 4px solid #dc2626; }
+.alert-warning { background: #fffbeb; color: #92400e; border-left: 4px solid #f59e0b; }
+.alert-deleted { background: #fff1f2; color: #9f1239; border-left: 4px solid #e11d48; }
+
+[data-theme="dark"] .alert-success { background: #052e1c; color: #6ee7b7; }
+[data-theme="dark"] .alert-error   { background: #2d0707; color: #fca5a5; }
+[data-theme="dark"] .alert-warning { background: #2d1c00; color: #fcd34d; }
+[data-theme="dark"] .alert-deleted { background: #2d000d; color: #fda4af; }
+
+/* ── Academic Records Table ──────────────────────────────────── */
+.table-responsive { overflow-x: auto; border-radius: var(--radius-sm); }
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.records-table thead th {
+  background: var(--bg-table-head);
+  color: #fff;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.records-table tbody tr {
+  background: var(--bg-table-row);
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.18s ease;
+}
+
+.records-table tbody tr:nth-child(even) {
+  background: var(--bg-table-alt);
+}
+
+.records-table tbody tr:hover {
+  background: var(--bg-table-hover) !important;
+  cursor: default;
+}
+
+.records-table tbody td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+.records-table tfoot td {
+  background: var(--ewu-green-dark);
+  color: #fff;
+  padding: 12px 14px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ── Grade Badges ────────────────────────────────────────────── */
+.grade-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  min-width: 36px;
+  text-align: center;
+}
+
+.badge-Aplus  { background: var(--badge-A-plus); }
+.badge-A      { background: var(--badge-A); }
+.badge-Aminus { background: #059669; }
+.badge-Bplus  { background: var(--badge-B-plus); }
+.badge-B      { background: var(--badge-B); }
+.badge-Cplus  { background: var(--badge-C-plus); }
+.badge-C      { background: var(--badge-C); color: #1a1000; }
+.badge-D      { background: var(--badge-D); }
+.badge-F      { background: var(--badge-F); }
+
+/* ── CGPA & Analytics Row ────────────────────────────────────── */
+.analytics-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+.stat-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ewu-green);
+  line-height: 1;
+}
+
+[data-theme="dark"] .stat-value { color: #4ade80; }
+
+.stat-sub {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+/* ── AI Motivation Banner ────────────────────────────────────── */
+.motivation-banner {
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+  border-left: 5px solid;
+  animation: slideDown 0.4s ease;
+}
+
+.motivation-banner .mot-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.motivation-banner .mot-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.motivation-banner .mot-text {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+/* Excellent (CGPA ≥ 3.50) */
+.mot-excellent {
+  background: var(--ewu-gold-light);
+  border-color: var(--ewu-gold);
+  color: #5a3a00;
+}
+.mot-excellent .mot-title { color: #c98a00; }
+[data-theme="dark"] .mot-excellent {
+  background: #2d1e00; color: #fde68a;
+}
+[data-theme="dark"] .mot-excellent .mot-title { color: var(--ewu-gold); }
+
+/* Good (3.00–3.49) */
+.mot-good {
+  background: var(--ewu-green-light);
+  border-color: var(--ewu-green);
+  color: #003d2a;
+}
+.mot-good .mot-title { color: var(--ewu-green-dark); }
+[data-theme="dark"] .mot-good {
+  background: #052e1c; color: #6ee7b7;
+}
+[data-theme="dark"] .mot-good .mot-title { color: #34d399; }
+
+/* Needs work (< 3.00) */
+.mot-work {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1e3a5f;
+}
+.mot-work .mot-title { color: #1d4ed8; }
+[data-theme="dark"] .mot-work {
+  background: #0d1f3c; color: #93c5fd;
+}
+[data-theme="dark"] .mot-work .mot-title { color: #60a5fa; }
+
+/* ── Empty State ─────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; }
+.empty-state p { font-size: 15px; }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.portal-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  margin-top: 12px;
+}
+.portal-footer span { color: var(--ewu-gold); }
+
+/* ── Utility ─────────────────────────────────────────────────── */
+.text-gold    { color: var(--ewu-gold); }
+.text-green   { color: var(--ewu-green); }
+.text-muted   { color: var(--text-muted); }
+.fw-600       { font-weight: 600; }
+.mb-0         { margin-bottom: 0 !important; }
+
+/* ── Marks Progress Bar ──────────────────────────────────────── */
+.marks-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.marks-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border-color);
+  overflow: hidden;
+}
+.marks-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--ewu-green);
+  transition: width 0.6s ease;
+}
+.marks-bar-fill.low  { background: #dc2626; }
+.marks-bar-fill.mid  { background: #f59e0b; }
+.marks-bar-fill.good { background: #2563eb; }
+.marks-bar-fill.high { background: var(--ewu-green); }
+.marks-num { font-weight: 600; font-size: 13px; min-width: 28px; }
+
+/* ── Section Divider ─────────────────────────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ================================================================
+   PRINT STYLES — Clean Official EWU Transcript
+   ================================================================ */
+@media print {
+
+  /* Reset page */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+  }
+
+  /* Hide non-transcript elements */
+  .ewu-header .header-controls,
+  .theme-toggle-btn,
+  .btn-gold,
+  .btn-outline,
+  .btn-danger,
+  .card-panel:has(.form-grid),
+  form,
+  .alert,
+  .portal-footer,
+  .no-print,
+  [class*="btn-"]:not(.print-only) {
+    display: none !important;
+  }
+
+  /* Header — keep, adjust */
+  .ewu-header {
+    background: #006a4e !important;
+    color: #fff !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  .portal-wrapper { padding: 16px !important; max-width: 100% !important; }
+
+  /* Transcript title */
+  .print-transcript-title {
+    display: block !important;
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #006a4e;
+    border-bottom: 2px solid #006a4e;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* Card panels — clean borders */
+  .card-panel {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+
+  .card-panel-header {
+    background: #006a4e !important;
+    color: #fff !important;
+  }
+
+  /* Table */
+  .records-table thead th { background: #006a4e !important; color: #fff !important; }
+  .records-table tbody tr { background: #fff !important; border-bottom: 1px solid #ccc !important; }
+  .records-table tbody tr:nth-child(even) { background: #f5f5f5 !important; }
+  .records-table tfoot td { background: #004d38 !important; color: #fff !important; }
+
+  /* Stats */
+  .analytics-bar { grid-template-columns: repeat(4, 1fr); }
+  .stat-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+  .stat-value { color: #006a4e !important; }
+
+  .motivation-banner { border: 1px solid #ccc !important; }
+
+  /* Page break control */
+  .card-panel { page-break-inside: avoid; }
+
+  /* Print header watermark */
+  .portal-footer {
+    display: block !important;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+  }
+}
+
+/* hide print-only elements on screen */
+.print-transcript-title { display: none; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ewu-header .header-inner { padding: 10px 14px; }
+  .ewu-title-block h1 { font-size: 1rem; }
+  .portal-wrapper { padding: 14px 12px 36px; }
+  .form-grid { grid-template-columns: 1fr 1fr; }
+  .analytics-bar { grid-template-columns: 1fr 1fr; }
+  .records-table { font-size: 12px; }
+  .records-table thead th,
+  .records-table tbody td { padding: 8px 10px; }
+}
+
+@media (max-width: 480px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .analytics-bar { grid-template-columns: 1fr 1fr; }
+}
